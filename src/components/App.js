@@ -33,15 +33,15 @@ const App = () => {
 						<Switch>
 							<Route
 								exact={true}
-								path='/'
+								path='/notebook-react-app/'
 								component={NotesListPage}
 							/>
 							<Route
-								path='/editNote/:id'
+								path='/notebook-react-app/editNote/:id'
 								component={EditNotePage}
 							/>
 							<Route
-								path='/addNote'
+								path='/notebook-react-app/addNote'
 								component={AddNotePage}
 							/>
 							<Route component={NotFoundPage} />
