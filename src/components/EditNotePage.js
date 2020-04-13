@@ -82,13 +82,13 @@ const EditNotePage = props => {
 			onSubmit={e => {
 				e.preventDefault()
 				handleEditSubmit(note.id, { title, body })
-				props.history.push('/')
+				props.history.push('/notebook-react-app/')
 			}}
 		>
 			<ButtonSection>
 				<Button
 					onClick={() => {
-						props.history.push('/')
+						props.history.push('/notebook-react-app/')
 						setTitle('')
 						setBody('')
 					}}

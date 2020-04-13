@@ -50,10 +50,14 @@ const Note = ({ note }) => {
 
 	return (
 		<NoteWrapper>
-			<NoteHeader to={`/editNote/${note.id}`}>
+			<NoteHeader
+				to={`/notebook-react-app/editNote/${note.id}`}
+			>
 				{note.title}
 			</NoteHeader>
-			<NoteContent to={`/editNote/${note.id}`}>
+			<NoteContent
+				to={`/notebook-react-app/editNote/${note.id}`}
+			>
 				<p>{previewContent(note.body)}</p>
 			</NoteContent>
 			<Button onClick={() => handleRemove(note.id)}>

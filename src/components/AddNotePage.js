@@ -71,13 +71,13 @@ const AddNotePage = props => {
 			onSubmit={e => {
 				e.preventDefault()
 				handleAddSubmit()
-				props.history.push('/')
+				props.history.push('/notebook-react-app/')
 			}}
 		>
 			<ButtonSection>
 				<Button
 					onClick={() => {
-						props.history.push('/')
+						props.history.push('/notebook-react-app/')
 						setTitle('')
 						setBody('')
 					}}

@@ -59,7 +59,10 @@ const Header = () => {
 
 	return (
 		<ButtonSection>
-			<StyledLink showLink={!showInput} to='/addNote'>
+			<StyledLink
+				showLink={!showInput}
+				to='/notebook-react-app/addNote'
+			>
 				<Plus size='36' />
 			</StyledLink>
 			<Input
