@@ -38,6 +38,22 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
         text-align: center;
     }
+
+    // scrollbar styling
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+	::-webkit-scrollbar-track {
+		background: ${props => props.theme.colors.primary};
+		border-radius: 15px;
+	}
+	::-webkit-scrollbar-thumb {
+		background: ${props => props.theme.colors.light};
+		border-radius: 15px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: ${props => props.theme.colors.secondaryLight};
+	}
 `
 
 const Layout = ({ children }) => (

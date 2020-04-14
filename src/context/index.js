@@ -14,6 +14,8 @@ const ContextProvider = ({ children }) => {
 	const [notes, dispatch] = useReducer(reducer, initialState)
 	const [title, setTitle] = useState('')
 	const [body, setBody] = useState('')
+	const homePath = '/notebook-react-app/'
+	const iconSize = '36'
 
 	// get notes from localStorage
 	useEffect(() => {
@@ -69,6 +71,7 @@ const ContextProvider = ({ children }) => {
 	return (
 		<GlobalContext.Provider
 			value={{
+				homePath,
 				notes,
 				title,
 				setTitle,
@@ -82,6 +85,7 @@ const ContextProvider = ({ children }) => {
 				setSearch,
 				showInput,
 				setShowInput,
+				iconSize,
 			}}
 		>
 			{children}

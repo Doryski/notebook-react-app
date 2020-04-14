@@ -1,5 +1,5 @@
 import React from 'react'
-import ContextProvider from '../context'
+import ContextProvider, { GlobalContext } from '../context'
 import AddNotePage from './AddNotePage'
 import EditNotePage from './EditNotePage'
 import styled from 'styled-components'
@@ -27,28 +27,36 @@ const Wrapper = styled.div`
 const App = () => {
 	return (
 		<ContextProvider>
-			<BrowserRouter>
-				<Layout>
-					<Wrapper>
-						<Switch>
-							<Route
-								exact={true}
-								path='/notebook-react-app/'
-								component={NotesListPage}
-							/>
-							<Route
-								path='/notebook-react-app/editNote/:id'
-								component={EditNotePage}
-							/>
-							<Route
-								path='/notebook-react-app/addNote'
-								component={AddNotePage}
-							/>
-							<Route component={NotFoundPage} />
-						</Switch>
-					</Wrapper>
-				</Layout>
-			</BrowserRouter>
+			{/* add context consumer to get homePath variable */}
+			<GlobalContext.Consumer>
+				{({ homePath }) => (
+					<BrowserRouter>
+						{/* styled components theme provider */}
+						<Layout>
+							{/* app wrapper */}
+							<Wrapper>
+								{/* router */}
+								<Switch>
+									<Route
+										exact={true}
+										path={homePath}
+										component={NotesListPage}
+									/>
+									<Route
+										path={`${homePath}editNote/:id`}
+										component={EditNotePage}
+									/>
+									<Route
+										path={`${homePath}addNote`}
+										component={AddNotePage}
+									/>
+									<Route component={NotFoundPage} />
+								</Switch>
+							</Wrapper>
+						</Layout>
+					</BrowserRouter>
+				)}
+			</GlobalContext.Consumer>
 		</ContextProvider>
 	)
 }

@@ -24,7 +24,8 @@ const Button = styled.button`
 `
 
 const StyledLink = styled(Link)`
-	display: ${props => (props.showLink ? 'block' : 'none')};
+	display: ${props =>
+		props.showlink === 'true' ? 'block' : 'none'};
 	width: 100%;
 	height: 100%;
 	border-top-left-radius: 12px;
@@ -55,15 +56,17 @@ const Header = () => {
 		handleFilterChange,
 		showInput,
 		setShowInput,
+		homePath,
+		iconSize
 	} = useContext(GlobalContext)
 
 	return (
 		<ButtonSection>
 			<StyledLink
-				showLink={!showInput}
-				to='/notebook-react-app/addNote'
+				showlink={(!showInput).toString()}
+				to={`${homePath}addNote`}
 			>
-				<Plus size='36' />
+				<Plus size={iconSize} />
 			</StyledLink>
 			<Input
 				type='text'
@@ -73,9 +76,9 @@ const Header = () => {
 			/>
 			<Button onClick={() => setShowInput(!showInput)}>
 				{showInput ? (
-					<Close size='36' />
+					<Close size={iconSize} />
 				) : (
-					<Search size='36' />
+					<Search size={iconSize} />
 				)}
 			</Button>
 		</ButtonSection>

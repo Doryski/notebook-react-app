@@ -24,6 +24,7 @@ const NoteContent = styled(Link)`
 	grid-row: none;
 	padding: ${props => props.theme.padding.medium} 0;
 	font-size: 0.9em;
+	line-height: 1.3em;
 `
 const Button = styled.button`
 	grid-row: none;
@@ -34,7 +35,7 @@ const Button = styled.button`
 `
 
 const Note = ({ note }) => {
-	const { handleRemove } = useContext(GlobalContext)
+	const { handleRemove, homePath } = useContext(GlobalContext)
 
 	const previewContent = content => {
 		// finds whitespace after
@@ -50,14 +51,10 @@ const Note = ({ note }) => {
 
 	return (
 		<NoteWrapper>
-			<NoteHeader
-				to={`/notebook-react-app/editNote/${note.id}`}
-			>
+			<NoteHeader to={`${homePath}editNote/${note.id}`}>
 				{note.title}
 			</NoteHeader>
-			<NoteContent
-				to={`/notebook-react-app/editNote/${note.id}`}
-			>
+			<NoteContent to={`${homePath}editNote/${note.id}`}>
 				<p>{previewContent(note.body)}</p>
 			</NoteContent>
 			<Button onClick={() => handleRemove(note.id)}>
