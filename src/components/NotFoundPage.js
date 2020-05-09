@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 import { GlobalContext } from '../context'
+import { Link as RouteLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
 	display: flex;
@@ -11,11 +11,11 @@ const Wrapper = styled.div`
 	height: 80%;
 `
 
-const StyledLink = styled(Link)`
+const Link = styled(RouteLink)`
 	margin-top: ${props => props.theme.padding.medium};
 	background: ${props => props.theme.colors.light};
 	padding: ${props => props.theme.padding.medium};
-	border-radius: 12px;
+	border-radius: ${props => props.theme.buttons.borderRadius};
 	font-size: 3em;
 	text-decoration: underline;
 	&:hover {
@@ -28,7 +28,7 @@ const NotFoundPage = () => {
 	return (
 		<Wrapper>
 			404! - Page was not found
-			<StyledLink to={homePath}>Go home</StyledLink>
+			<Link to={homePath}>Go home</Link>
 		</Wrapper>
 	)
 }

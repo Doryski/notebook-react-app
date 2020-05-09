@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import { GlobalContext } from '../context'
 import ButtonSection from './ButtonSection'
 import TitleInput from './TitleInput'
 import BodyInput from './BodyInput'
-import { StyledForm } from './StyledCommon'
+import { Form } from '../components/StyledComponents/StyledForm'
 
-const EditNotePage = props => {
+const EditNotePage = () => {
 	const {
 		notes,
 		title,
@@ -13,11 +14,12 @@ const EditNotePage = props => {
 		body,
 		setBody,
 		handleEditSubmit,
-		homePath
+		homePath,
 	} = useContext(GlobalContext)
-
+	const history = useHistory()
+	const params = useParams()
 	const note = notes.filter(
-		note => note.id === props.match.params.id && note
+		note => note.id === params.id && note
 	)[0]
 
 	useEffect(() => {
@@ -26,19 +28,17 @@ const EditNotePage = props => {
 	}, [])
 
 	return (
-		<StyledForm
+		<Form
 			onSubmit={e => {
 				e.preventDefault()
 				handleEditSubmit(note.id, { title, body })
-				props.history.push(homePath)
+				history.push(homePath)
 			}}
 		>
-			<ButtonSection page='edit' history={props.history} />
-
+			<ButtonSection page='edit' history={history} />
 			<TitleInput />
 			<BodyInput />
-
-		</StyledForm>
+		</Form>
 	)
 }
 

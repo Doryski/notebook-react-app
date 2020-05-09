@@ -3,23 +3,25 @@ import { GlobalContext } from '../context'
 import ButtonSection from './ButtonSection'
 import TitleInput from './TitleInput'
 import BodyInput from './BodyInput'
-import { StyledForm } from './StyledCommon'
+import { Form } from './StyledComponents/StyledForm'
+import { useHistory } from 'react-router-dom'
 
-const AddNotePage = props => {
+const AddNotePage = () => {
 	const { handleAddSubmit, homePath } = useContext(GlobalContext)
+	const history = useHistory()
 
 	return (
-		<StyledForm
+		<Form
 			onSubmit={e => {
 				e.preventDefault()
 				handleAddSubmit()
-				props.history.push(homePath)
+				history.push(homePath)
 			}}
 		>
-			<ButtonSection page='add' history={props.history} />
+			<ButtonSection page='add' history={history} />
 			<TitleInput />
 			<BodyInput />
-		</StyledForm>
+		</Form>
 	)
 }
 

@@ -19,9 +19,7 @@ module.exports = {
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
-				use: [
-					'file-loader',
-				],
+				use: ['file-loader'],
 			},
 		],
 	},
@@ -30,4 +28,7 @@ module.exports = {
 			template: './public/index.html',
 		}),
 	],
+	devServer: {
+		historyApiFallback: true,
+	},
 }

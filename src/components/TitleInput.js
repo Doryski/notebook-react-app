@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context'
-import { StyledLabel, Input } from './StyledCommon'
+import { Label, Input } from './StyledComponents/StyledForm'
 
 const TitleInput = () => {
 	const { title, setTitle } = useContext(GlobalContext)
 
 	return (
-		<StyledLabel>
+		<Label>
 			Title
 			<Input
 				value={title}
 				onChange={e => setTitle(e.target.value)}
 			/>
-		</StyledLabel>
+		</Label>
 	)
 }
 

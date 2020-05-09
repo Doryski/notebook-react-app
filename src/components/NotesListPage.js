@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import Note from './Note'
-import styled from 'styled-components'
 import { GlobalContext } from '../context'
+import Note from './Note'
 import Header from './Header'
+import styled from 'styled-components'
 
 const NotesListWrapper = styled.div`
-	overflow: auto;
+	overflow-y: auto;
 `
 
 const NotesListPage = () => {

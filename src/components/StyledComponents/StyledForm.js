@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const StyledForm = styled.form`
+export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 `
 
-export const StyledLabel = styled.label`
+export const Label = styled.label`
 	display: flex;
 	flex-direction: column;
 	margin-top: ${props => props.theme.padding.medium};
@@ -13,16 +13,15 @@ export const StyledLabel = styled.label`
 `
 
 export const Input = styled.input`
-			border: none;
-			border-bottom: 1px solid
-				${props => props.theme.colors.secondary};
-			width: 100%;
-			margin-top: ${props => props.theme.padding.small};
-			background: ${props => props.theme.colors.light};
-			padding: ${props => props.theme.padding.medium}
-				${props => props.theme.padding.small};
-			font-family: inherit;
-		`
+	border: none;
+	border-bottom: 1px solid ${props => props.theme.colors.secondary};
+	width: 100%;
+	margin-top: ${props => props.theme.padding.small};
+	background: ${props => props.theme.colors.light};
+	padding: ${props => props.theme.padding.medium}
+		${props => props.theme.padding.small};
+	font-family: inherit;
+`
 
 export const Textarea = styled.textarea`
 	display: block;
