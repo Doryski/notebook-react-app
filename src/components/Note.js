@@ -7,21 +7,11 @@ import {
 	NoteContent,
 	Button,
 } from '../components/StyledComponents/StyledNote'
+import previewContent from '../functions/previewContent'
 
 const Note = ({ note }) => {
 	const { handleRemove, homePath } = useContext(GlobalContext)
 	const iconSize = '30'
-	const previewContent = content => {
-		// finds whitespace after
-		if (content.length > 75) {
-			const i = 70
-			const space = i + content.slice(i, 100).indexOf(' ')
-			// returns content without cutting words
-			return `${content.slice(0, space)}...`
-		} else {
-			return content
-		}
-	}
 
 	return (
 		<NoteWrapper>
