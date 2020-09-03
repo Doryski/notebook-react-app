@@ -1,16 +1,14 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from '../context'
+import React from 'react'
 import { Label, Textarea } from './StyledComponents/StyledForm'
 import theme from '../theme'
 
-const BodyInput = () => {
-	const { body, setBody } = useContext(GlobalContext)
-	const rowsOnMobile = '9'
-	const rowsOnDesktop = '13'
+const BodyInput = ({ body, handleBodyChange }) => {
+	const ROWS_ON_MOBILE = '9'
+	const ROWS_ON_DESKTOP = '13'
 	const numberOfRows =
 		window.innerWidth < theme.breakpoints.mobile
-			? rowsOnMobile
-			: rowsOnDesktop
+			? ROWS_ON_MOBILE
+			: ROWS_ON_DESKTOP
 
 	return (
 		<Label>
@@ -18,7 +16,7 @@ const BodyInput = () => {
 			<Textarea
 				rows={numberOfRows}
 				value={body}
-				onChange={e => setBody(e.target.value)}
+				onChange={handleBodyChange}
 			/>
 		</Label>
 	)

@@ -1,44 +1,54 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import ContextProvider, { GlobalContext } from '../context'
-import AddNotePage from './AddNotePage'
-import EditNotePage from './EditNotePage'
-import NotesListPage from './NotesListPage'
-import NotFoundPage from './NotFoundPage'
+import ContextProvider from '../context'
 import Layout from '../theme/ThemeProvider'
 import { Wrapper } from '../components/StyledComponents/AppWrapper'
+import Center from '../components/StyledComponents/Center'
+import { HOME_PATH } from '../helpers/utils'
+import EditNotePage from './EditNotePage'
+const AddNotePage = lazy(() =>
+	import(/* webpackChunkName: "AddNotePage" */ './AddNotePage')
+)
+const NotesListPage = lazy(() =>
+	import(/* webpackChunkName: "NotesListPage" */ './NotesListPage')
+)
+const NotFoundPage = lazy(() =>
+	import(/* webpackChunkName: "NotFoundPage" */ './NotFoundPage')
+)
 
-const App = () => {
-	return (
-		<ContextProvider>
-			<GlobalContext.Consumer>
-				{({ homePath }) => (
-					<BrowserRouter>
-						<Layout>
-							<Wrapper>
-								<Switch>
-									<Route
-										exact={true}
-										path={homePath}
-										component={NotesListPage}
-									/>
-									<Route
-										path={`${homePath}editNote/:id`}
-										component={EditNotePage}
-									/>
-									<Route
-										path={`${homePath}addNote`}
-										component={AddNotePage}
-									/>
-									<Route component={NotFoundPage} />
-								</Switch>
-							</Wrapper>
-						</Layout>
-					</BrowserRouter>
-				)}
-			</GlobalContext.Consumer>
-		</ContextProvider>
-	)
-}
+const App = () => (
+	<ContextProvider>
+		<BrowserRouter>
+			<Layout>
+				<Wrapper>
+					<React.Suspense
+						fallback={
+							<Center>
+								<h1>Loading...</h1>
+							</Center>
+						}
+					>
+						<Switch>
+							<Route
+								exact={true}
+								path={HOME_PATH}
+								component={NotesListPage}
+							/>
+							<Route
+								path={`${HOME_PATH}editNote/:id`}
+								component={EditNotePage}
+							/>
+							<Route
+								path={`${HOME_PATH}addNote`}
+								component={AddNotePage}
+							/>
+							<Route component={NotFoundPage} />
+						</Switch>
+					</React.Suspense>
+				</Wrapper>
+			</Layout>
+		</BrowserRouter>
+	</ContextProvider>
+)
 
 export default App

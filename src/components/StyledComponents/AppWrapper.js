@@ -6,12 +6,12 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-radius: 20px;
-	background: ${props => props.theme.colors.primary};
-	padding: ${props => props.theme.padding.medium}
-		${props => props.theme.padding.large};
-	color: ${props => props.theme.colors.secondary};
+	background: ${({ theme }) => theme.colors.primary};
+	padding: ${({ theme }) =>
+		`${theme.padding.medium} ${theme.padding.large}`};
+	color: ${({ theme }) => theme.colors.secondary};
 
-	@media (max-width: ${props => props.theme.breakpoints.mobile}px) {
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
 		margin: auto;
 	}
 `

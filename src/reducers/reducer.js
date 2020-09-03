@@ -15,9 +15,8 @@ export default (state, action) => {
 			return state.map(note => {
 				if (note.id === action.id) {
 					return { ...note, ...action.updates }
-				} else {
-					return note
 				}
+				return note
 			})
 		case 'REMOVE_NOTE':
 			return state.filter(note => note.id !== action.id)

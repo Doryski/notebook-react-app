@@ -10,17 +10,17 @@ export const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	border: none;
-	border-top-left-radius: ${props =>
-		props.theme.buttons.borderRadius};
-	background: ${props => props.theme.colors.primary};
-	color: ${props => props.theme.colors.secondary};
+	border-top-left-radius: ${({ theme }) =>
+		theme.buttons.borderRadius};
+	background: ${({ theme }) => theme.colors.primary};
+	color: ${({ theme }) => theme.colors.secondary};
 
 	&:hover {
-		background: ${props => props.theme.colors.light};
+		background: ${({ theme }) => theme.colors.light};
 	}
 `
 export const RightButton = styled(Button)`
 	border-top-left-radius: 0;
-	border-top-right-radius: ${props =>
-		props.theme.buttons.borderRadius};
+	border-top-right-radius: ${({ theme }) =>
+		theme.buttons.borderRadius};
 `

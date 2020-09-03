@@ -8,29 +8,29 @@ export const Form = styled.form`
 export const Label = styled.label`
 	display: flex;
 	flex-direction: column;
-	margin-top: ${props => props.theme.padding.medium};
+	margin-top: ${({ theme }) => theme.padding.medium};
 	font-weight: 600;
 `
 
 export const Input = styled.input`
 	border: none;
-	border-bottom: 1px solid ${props => props.theme.colors.secondary};
+	border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
 	width: 100%;
-	margin-top: ${props => props.theme.padding.small};
-	background: ${props => props.theme.colors.light};
-	padding: ${props => props.theme.padding.medium}
-		${props => props.theme.padding.small};
+	margin-top: ${({ theme }) => theme.padding.small};
+	background: ${({ theme }) => theme.colors.light};
+	padding: ${({ theme }) =>
+		`${theme.padding.medium} ${theme.padding.small}`};
 	font-family: inherit;
 `
 
 export const Textarea = styled.textarea`
 	display: block;
 	border: none;
-	border-bottom: 1px solid ${props => props.theme.colors.secondary};
+	border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
 	width: 100%;
-	margin-top: ${props => props.theme.padding.small};
-	padding: ${props => props.theme.padding.small};
-	background: ${props => props.theme.colors.light};
+	margin-top: ${({ theme }) => theme.padding.small};
+	padding: ${({ theme }) => theme.padding.small};
+	background: ${({ theme }) => theme.colors.light};
 	resize: none;
 	font-family: inherit;
 	height: 100%;
@@ -38,12 +38,12 @@ export const Textarea = styled.textarea`
 
 	// scrollbar styling
 	::-webkit-scrollbar-track {
-		background: ${props => props.theme.colors.light};
+		background: ${({ theme }) => theme.colors.light};
 	}
 	::-webkit-scrollbar-thumb {
-		background: ${props => props.theme.colors.primary};
+		background: ${({ theme }) => theme.colors.primary};
 	}
 	::-webkit-scrollbar-thumb:hover {
-		background: ${props => props.theme.colors.secondaryLight};
+		background: ${({ theme }) => theme.colors.secondaryLight};
 	}
 `

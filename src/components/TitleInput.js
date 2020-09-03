@@ -1,19 +1,11 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from '../context'
+import React from 'react'
 import { Label, Input } from './StyledComponents/StyledForm'
 
-const TitleInput = () => {
-	const { title, setTitle } = useContext(GlobalContext)
-
-	return (
-		<Label>
-			Title
-			<Input
-				value={title}
-				onChange={e => setTitle(e.target.value)}
-			/>
-		</Label>
-	)
-}
+const TitleInput = ({ title, handleTitleChange }) => (
+	<Label>
+		Title
+		<Input value={title} onChange={handleTitleChange} />
+	</Label>
+)
 
 export default TitleInput

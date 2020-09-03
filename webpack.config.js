@@ -5,7 +5,8 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, '/build'),
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
+		chunkFilename: '[name].bundle.js',
 	},
 	devtool: 'cheap-module-source-map',
 	module: {

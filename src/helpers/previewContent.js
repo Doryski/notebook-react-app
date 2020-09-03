@@ -5,9 +5,8 @@ const previewContent = content => {
 		const space = i + content.slice(i, 100).indexOf(' ')
 		// returns content without cutting words
 		return `${content.slice(0, space)}...`
-	} else {
-		return content
 	}
+	return content
 }
 
 export default previewContent

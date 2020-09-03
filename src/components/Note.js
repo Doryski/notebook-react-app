@@ -1,28 +1,31 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Trash } from '@styled-icons/evil'
-import { GlobalContext } from '../context'
 import {
 	NoteWrapper,
 	NoteHeader,
 	NoteContent,
 	Button,
 } from '../components/StyledComponents/StyledNote'
-import previewContent from '../functions/previewContent'
+import previewContent from '../helpers/previewContent'
+import { HOME_PATH } from '../helpers/utils'
+import useNoteHandler from '../helpers/useNoteHandler'
+
+const ICON_SIZE = '30'
 
 const Note = ({ note }) => {
-	const { handleRemove, homePath } = useContext(GlobalContext)
-	const iconSize = '30'
+	const { id, title, body } = note
+	const { handleRemoveNote } = useNoteHandler()
 
 	return (
 		<NoteWrapper>
-			<NoteHeader to={`${homePath}editNote/${note.id}`}>
-				{note.title}
+			<NoteHeader to={`${HOME_PATH}editNote/${id}`}>
+				{title}
 			</NoteHeader>
-			<NoteContent to={`${homePath}editNote/${note.id}`}>
-				<p>{previewContent(note.body)}</p>
+			<NoteContent to={`${HOME_PATH}editNote/${id}`}>
+				<p>{previewContent(body)}</p>
 			</NoteContent>
-			<Button onClick={() => handleRemove(note.id)}>
-				<Trash size={iconSize} />
+			<Button onClick={() => handleRemoveNote(id)}>
+				<Trash size={ICON_SIZE} />
 			</Button>
 		</NoteWrapper>
 	)
