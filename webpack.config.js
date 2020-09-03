@@ -7,7 +7,7 @@ module.exports = {
 		path: path.join(__dirname, '/build'),
 		filename: '[name].bundle.js',
 		chunkFilename: '[name].bundle.js',
-		publicPath: 'build/',
+		publicPath: '',
 	},
 	devtool: 'cheap-module-source-map',
 	module: {
