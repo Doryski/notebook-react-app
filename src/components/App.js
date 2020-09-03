@@ -6,11 +6,9 @@ import { Wrapper } from '../components/StyledComponents/AppWrapper'
 import Center from '../components/StyledComponents/Center'
 import { HOME_PATH } from '../helpers/utils'
 import EditNotePage from './EditNotePage'
+import NotesListPage from './NotesListPage'
 const AddNotePage = lazy(() =>
 	import(/* webpackChunkName: "AddNotePage" */ './AddNotePage')
-)
-const NotesListPage = lazy(() =>
-	import(/* webpackChunkName: "NotesListPage" */ './NotesListPage')
 )
 const NotFoundPage = lazy(() =>
 	import(/* webpackChunkName: "NotFoundPage" */ './NotFoundPage')
@@ -30,16 +28,16 @@ const App = () => (
 					>
 						<Switch>
 							<Route
-								exact={true}
+								exact
 								path={HOME_PATH}
 								component={NotesListPage}
 							/>
 							<Route
-								path={`${HOME_PATH}editNote/:id`}
+								path={HOME_PATH + 'editNote/:id'}
 								component={EditNotePage}
 							/>
 							<Route
-								path={`${HOME_PATH}addNote`}
+								path={HOME_PATH + 'addNote'}
 								component={AddNotePage}
 							/>
 							<Route component={NotFoundPage} />
