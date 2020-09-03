@@ -12,7 +12,7 @@ const Header = ({
 }) => {
 	return (
 		<ButtonSection>
-			<Link show={!showInput} to={`${HOME_PATH}addNote`}>
+			<Link show={!showInput} to={HOME_PATH + 'addNote'}>
 				<Plus size={ICON_SIZE} />
 			</Link>
 			<Input

@@ -8,10 +8,10 @@ import { HOME_PATH } from '../helpers/utils'
 import EditNotePage from './EditNotePage'
 import NotesListPage from './NotesListPage'
 const AddNotePage = lazy(() =>
-	import(/* webpackChunkName: "AddNotePage" */ './AddNotePage')
+	import(/* webpackChunkName: "add-note-page" */ './AddNotePage')
 )
 const NotFoundPage = lazy(() =>
-	import(/* webpackChunkName: "NotFoundPage" */ './NotFoundPage')
+	import(/* webpackChunkName: "not-found-page" */ './NotFoundPage')
 )
 
 const App = () => (
