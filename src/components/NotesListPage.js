@@ -1,28 +1,22 @@
-import React, { useContext, useState } from 'react'
-import Note from './Note'
-import Header from './Header'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { GlobalContext } from '../context'
+import Note from './Note'
+import Header from './Header'
+import EmptyPage from './EmptyPage'
 import useShowInput from '../helpers/useShowInput'
+import useNotesFilter from '../helpers/useNotesFilter'
 
-const NotesListWrapper = styled.div`
+export const NotesListWrapper = styled.div`
 	overflow-y: auto;
+	height: 100%;
 `
 
 const NotesListPage = () => {
 	const { notes } = useContext(GlobalContext)
 	const { showInput, toggleShowInput } = useShowInput(false)
-	const [search, setSearch] = useState('')
+	const { filteredData, handleFilterChange } = useNotesFilter(notes)
 
-	const handleFilterChange = e => {
-		const value = e.target.value || ''
-		setSearch(value)
-	}
-	const filteredData = notes.filter(
-		note =>
-			note.title.toLowerCase().includes(search.toLowerCase()) ||
-			note.body.toLowerCase().includes(search.toLowerCase())
-	)
 	return (
 		<>
 			<Header
@@ -31,7 +25,11 @@ const NotesListPage = () => {
 				toggleShowInput={toggleShowInput}
 			/>
 			<NotesListWrapper>
-				{(showInput ? filteredData : notes).map(note => (
+				{!notes.length && <EmptyPage showInput={showInput} />}
+				{(!!notes.length && showInput
+					? filteredData
+					: notes
+				).map(note => (
 					<Note key={note.id} note={note} />
 				))}
 			</NotesListWrapper>
