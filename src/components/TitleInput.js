@@ -1,10 +1,14 @@
 import React from 'react'
-import { Label, Input } from './StyledComponents/StyledForm'
+import { Label, Input } from './shared/NoteForm'
 
 const TitleInput = ({ title, handleTitleChange }) => (
 	<Label>
 		Title
-		<Input value={title} onChange={handleTitleChange} />
+		<Input
+			placeholder='Add title'
+			value={title}
+			onChange={handleTitleChange}
+		/>
 	</Label>
 )
 
