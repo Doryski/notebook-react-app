@@ -7,7 +7,6 @@ module.exports = {
 		path: path.join(__dirname, '/build'),
 		filename: '[name].bundle.js',
 		chunkFilename: '[name].bundle.js',
-		publicPath: '',
 	},
 	devtool: 'cheap-module-source-map',
 	module: {
@@ -20,8 +19,18 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/,
-				use: ['file-loader'],
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'eslint-loader',
+				},
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf|jpg)$/i,
+				loader: 'file-loader',
+				options: {
+					name: '[path][name].[ext]',
+				},
 			},
 		],
 	},
