@@ -1,8 +1,8 @@
-const previewContent = content => {
-	// finds whitespace after
+const previewContent = (content, cutAfter, cutBefore) => {
+	// finds whitespace after given number of signs
 	if (content.length > 75) {
-		const i = 70
-		const space = i + content.slice(i, 100).indexOf(' ')
+		const space =
+			cutAfter + content.slice(cutAfter, cutBefore).indexOf(' ')
 		// returns content without cutting words
 		return `${content.slice(0, space)}...`
 	}
