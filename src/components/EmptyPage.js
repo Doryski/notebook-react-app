@@ -23,7 +23,7 @@ export const CenterContent = styled(Center)`
 
 const EmptyPage = () => (
 	<CenterContent>
-		<span>Looks like you haven&apost made any notes yet.</span>
+		<span>Looks like you haven't made any notes yet.</span>
 		<strong>Click here to create one.</strong>
 		<Link to={HOME_PATH + ADD_NOTE}>
 			<Plus size={ICON_SIZE} />
