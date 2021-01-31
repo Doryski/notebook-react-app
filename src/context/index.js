@@ -1,26 +1,12 @@
-import React, { createContext, useReducer, useEffect } from 'react'
-import reducer from '../reducers/reducer'
+import React, { createContext } from 'react'
+import reducer from '../store/reducer'
 import initialState from '../helpers/initialState'
+import useNotesStorage from '../helpers/useNotesStorage'
 
 export const GlobalContext = createContext()
 
 const ContextProvider = ({ children }) => {
-	const [notes, dispatch] = useReducer(reducer, initialState)
-
-	useEffect(() => {
-		const notes = JSON.parse(localStorage.getItem('notes'))
-
-		if (notes) {
-			dispatch({
-				type: 'GET_NOTES',
-				notes,
-			})
-		}
-	}, [])
-
-	useEffect(() => {
-		localStorage.setItem('notes', JSON.stringify(notes))
-	}, [notes])
+	const { notes, dispatch } = useNotesStorage(reducer, initialState)
 
 	return (
 		<GlobalContext.Provider value={{ notes, dispatch }}>
