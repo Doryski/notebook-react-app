@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { GlobalContext } from '../context'
-import { addNote, removeNote, updateNote } from '../actions'
+import { addNote, removeNote, updateNote } from '../store/actions'
 
 export default function useNoteHandler() {
 	const { dispatch } = useContext(GlobalContext)
@@ -13,11 +13,9 @@ export default function useNoteHandler() {
 	}
 	const handleAddNote = () => {
 		dispatch(addNote(title, body))
-		resetNote()
 	}
 	const handleEditNote = (id, updates) => {
 		dispatch(updateNote(id, updates))
-		resetNote()
 	}
 
 	const handleRemoveNote = id => {
