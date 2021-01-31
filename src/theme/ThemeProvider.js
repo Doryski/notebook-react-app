@@ -1,10 +1,16 @@
 import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import theme from '.'
+import Montserrat from '../fonts/Montserrat/Montserrat-Regular.ttf'
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: 'Montserrat';
+        src: url(${Montserrat});
+    }
+    
     body {
-        font-family: Montserrat, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,12 +23,6 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
-
-    #app {
-        min-width: 300px;
-        width: 80%;
-        max-width: 500px;
-    }
     
     ul {
         list-style-type: none;
@@ -31,7 +31,10 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         cursor: pointer;
-        color: ${props => props.theme.colors.secondary};
+        color: ${({ theme }) => theme.colors.secondary};
+    }
+    input, button, textarea {
+        outline: none;
     }
 
     button {
@@ -44,15 +47,15 @@ const GlobalStyle = createGlobalStyle`
 		width: 6px;
 	}
 	::-webkit-scrollbar-track {
-		background: ${props => props.theme.colors.primary};
+		background: ${({ theme }) => theme.colors.primary};
 		border-radius: 15px;
 	}
 	::-webkit-scrollbar-thumb {
-		background: ${props => props.theme.colors.light};
+		background: ${({ theme }) => theme.colors.light};
 		border-radius: 15px;
 	}
 	::-webkit-scrollbar-thumb:hover {
-		background: ${props => props.theme.colors.secondaryLight};
+		background: ${({ theme }) => theme.colors.secondaryLight};
 	}
 `
 
