@@ -1,5 +1,4 @@
-export const HOME_PATH = '/'
+export const HOME_PATH = '/notebook-react-app/'
 export const ICON_SIZE = '36'
-export const PLACEHOLDER = 'Search...'
-export const EDIT_PAGE = 'edit'
-export const ADD_PAGE = 'add'
+export const EDIT_NOTE = 'edit'
+export const ADD_NOTE = 'add'
