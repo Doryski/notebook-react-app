@@ -3,7 +3,7 @@ import { Link as RouteLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { HOME_PATH } from '../helpers/utils'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -11,13 +11,14 @@ const Wrapper = styled.div`
 	height: 80%;
 `
 
-const Link = styled(RouteLink)`
+export const Link = styled(RouteLink)`
 	margin-top: ${({ theme }) => theme.padding.medium};
 	background: ${({ theme }) => theme.colors.light};
 	padding: ${({ theme }) => theme.padding.medium};
 	border-radius: ${({ theme }) => theme.buttons.borderRadius};
 	font-size: 3em;
 	text-decoration: underline;
+	text-align: center;
 	&:hover {
 		text-decoration: none;
 	}
