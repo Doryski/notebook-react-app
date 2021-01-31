@@ -2,18 +2,16 @@
 
 ## About
 
-This is a small notebook app. The data is stored in localStorage.
+This is a basic notebook app. The data is stored in localStorage.
+**You can access the app here:** https://doryski.github.io/notebook-react-app/
 
-## Demo
 
-Check the demo for project: https://doryski.github.io/notebook-react-app/
+### Available actions:
 
-#### Available actions:
-
--   add note (when click add button, then confirming with checkmark)
--   remove note (when click trash button)
--   edit note (when clicking note title or body)
--   search for note (when clicking search/loop button)
+-   add note
+-   edit note
+-   remove note
+-   search for note
 
 ## Running project on your local machine
 
@@ -44,3 +42,11 @@ If no version is provided, please follow the instructions on https://nodejs.org/
 3. Once in the directory, run `npm install` to install all the required dependencies.
 
 4. Lastly run `npm start` to start the application on http://localhost:8080/.
+
+## Possible future features
+
+- User profile creation
+- Integration with cloud database
+- Personalization settings (multiple themes, profile and langauge settings)
+- Classification of notes
+- Sorting by title, description, date, category
