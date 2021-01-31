@@ -1,19 +1,22 @@
 import React, { useEffect, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import { GlobalContext } from '../context'
 import ButtonSection from './ButtonSection'
 import TitleInput from './TitleInput'
 import BodyInput from './BodyInput'
-import { Form } from '../components/StyledComponents/StyledForm'
-import { HOME_PATH, EDIT_PAGE } from '../helpers/utils'
+import { Form } from './shared/NoteForm'
+import Modal from './shared/Modal'
 import useNoteHandler from '../helpers/useNoteHandler'
-import { GlobalContext } from '../context'
+import modalData from '../helpers/modalData'
+import handleSubmit from '../helpers/handleSubmit'
+import { EDIT_NOTE } from '../helpers/utils'
+import useUpdateNote from '../helpers/useUpdateNote'
 
 const EditNotePage = () => {
 	const { notes } = useContext(GlobalContext)
 	const {
 		title,
 		body,
-		handleEditNote,
 		setTitle,
 		setBody,
 		handleTitleChange,
@@ -30,24 +33,41 @@ const EditNotePage = () => {
 	}, [])
 	const history = useHistory()
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		handleEditNote(note.id, { title, body })
-		history.push(HOME_PATH)
-	}
+	const {
+		isModalOpen,
+		close,
+		open,
+		handleConfirmUpdateClick,
+		didNoteChange,
+	} = useUpdateNote(note, { title, body }, history)
 
 	return (
-		<Form onSubmit={handleSubmit}>
-			<ButtonSection page={EDIT_PAGE} />
-			<TitleInput
-				title={title}
-				handleTitleChange={handleTitleChange}
-			/>
-			<BodyInput
-				body={body}
-				handleBodyChange={handleBodyChange}
-			/>
-		</Form>
+		<>
+			<Form onSubmit={handleSubmit}>
+				<ButtonSection
+					page={EDIT_NOTE}
+					handleUpdateBtnClick={open}
+					didNoteChange={didNoteChange}
+				/>
+				<TitleInput
+					title={title}
+					handleTitleChange={handleTitleChange}
+				/>
+				<BodyInput
+					body={body}
+					handleBodyChange={handleBodyChange}
+				/>
+				<Modal
+					data={modalData.update}
+					isModalOpen={isModalOpen}
+					close={close}
+					didNoteChange={didNoteChange}
+					onLeftBtnClick={handleConfirmUpdateClick}
+					onRightBtnClick={close}
+					onOkayBtnClick={close}
+				/>
+			</Form>
+		</>
 	)
 }
 
