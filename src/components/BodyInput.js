@@ -1,20 +1,19 @@
-import React from 'react'
-import { Label, Textarea } from './StyledComponents/StyledForm'
-import theme from '../theme'
+import React, { useRef } from 'react'
+import { Label, Textarea } from './shared/NoteForm'
+import useTextareaHeight from '../helpers/useTextareaHeight'
 
 const BodyInput = ({ body, handleBodyChange }) => {
-	const ROWS_ON_MOBILE = '9'
-	const ROWS_ON_DESKTOP = '13'
-	const numberOfRows =
-		window.innerWidth < theme.breakpoints.mobile
-			? ROWS_ON_MOBILE
-			: ROWS_ON_DESKTOP
+	const textareaRef = useRef(null)
+	const maxHeight = useTextareaHeight(textareaRef)
 
 	return (
 		<Label>
 			Body
 			<Textarea
-				rows={numberOfRows}
+				ref={textareaRef}
+				maxHeight={maxHeight}
+				placeholder='Add description'
+				rows={1000}
 				value={body}
 				onChange={handleBodyChange}
 			/>
